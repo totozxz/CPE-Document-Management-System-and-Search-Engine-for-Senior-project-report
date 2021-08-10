@@ -1,0 +1,132 @@
+
+<form name="my-form" method="POST" id="Update_Doc" onsubmit="Set_Tags()">
+    <div class="page-wrapper bg-dark p-t-100 p-b-50">
+        <div class="wrapper wrapper--w900">
+            <div class="card card-6">
+                <div class="card-heading">
+                    <h2 class="title">Edit Document</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        <input type="hidden" name="id" value="<%= docs._id %>">
+                        <div class="form-row">
+                            <div class="name">Project Title</div>
+                            <div class="value">
+                                <input class="input--style-6" type="text" name="title" required aria-required="true" value="<%= docs.project_title %>">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                        <div class="name">Project number</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-6" type="text" name="group_number" placeholder="" required aria-required="true" value="<%= docs.project_no %>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name ">Year</div>
+                            <div class="value">
+                                <select class="form-control" id="ddlYears" name="year" ><option selected value="<%= docs.Year %>"><%= docs.Year %></option></select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Advisor Name</div>
+                            <div class="value">
+                                <input class="input--style-6" type="text" name="advisor" required aria-required="true" value="<%= docs.Advisor %>">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">CO-Advisor Name</div>
+                            <div class="value">
+                                <input class="input--style-6" type="text" name="co_advisor" value="<%= docs.Co_Advisor %>">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Member Name</div>
+                            
+                            <input type="hidden" value="1" id="total_member">
+                            <input type="hidden" value="0" id="check_2">
+                            <input type="hidden" value="0" id="check_3">
+               
+                            <div class="value" id="member_fields">
+                                <ul class="list-inline m-0">
+                                    <li class="list-inline-item">
+                                        <input class="input--style-6 member" type="text" id="member_1" name="member" size="40" value="<%= docs.Member[0] %>" required aria-required="true">
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <button type="button" class="btn btn--radius-2 btn-outline-primary" onclick="addmember()">+</button>
+                                    </li>
+                                </ul>
+                                
+                                <%  var n = docs.Member.length;
+                                    for (var i = 1 ; i < n;i++){ %>
+                                        
+                                        <ul class="list-inline m-0" id="Member_line_<%= i+1 %>">
+                                            <li class="list-inline-item">
+                                                <input class="input--style-6 member" type="text" id="member_<%= i+1 %>" name="member" value="<%= docs.Member[i] %>" size="40" required aria-required="true">
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <button type="button" class="btn btn--radius-2 btn-outline-danger" id="<%= i+1 %>" onclick="delmember(this.id)"> - </button>
+                                            </li>
+                                        </ul>
+                                        
+                                        <script>document.getElementById('total_member').value ++ ; </script>
+                                        <script>document.getElementById('check_'+document.getElementById('total_member').value).value = 1 ; </script>
+                                <%  } %>
+                            </div>
+                            <div class="value">
+                                
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Tags</div>
+
+                            <input type="hidden" id="All_tags" name="All_tags" value="<%=docs.Tags%>">
+                            <div class="value" id="tag_fields">
+                                
+                                <input class="input--style-6" type="text" id="Tag" placeholder="Type your hashtag & click enter." autocomplete="off">
+                                        
+                                
+                                <div class="tag-container">
+                                
+                                <%  var n = docs.Tags.length;
+                                    for (var i = 0 ; i < n;i++){ %>
+                                        
+                                        <p class="tag" > <%=docs.Tags[i]%> </p>
+                                <%  }%>
+                            </div>
+                            </div>
+                        </div>
+                        <!--
+                        <div class="form-row">
+                            <div class="name">Upload Report</div>
+                            <div class="value">
+                                <div class="input-group js-input-file">
+                                    <input class="input-file" type="file" id="file">
+                                    <label class="label--file" for="file">Choose file</label>
+                                    <span class="input-file__info">No file chosen</span>
+                                </div>
+                                <div class="label--desc">Upload your Project Report. Max file size 50 MB</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Upload Poster</div>
+                            <div class="value">
+                                <div class="input-group js-input-file">
+                                    <input class="input-file" type="file" id="file">
+                                    <label class="label--file" for="file">Choose file</label>
+                                    <span class="input-file__info">No file chosen</span>
+                                </div>
+                                <div class="label--desc">Upload your Project Poster. Max file size 50 MB</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                -->
+                <div class="card-footer">
+                    <button class="btn2 btn--radius-2 btn--blue-2" type="submit">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

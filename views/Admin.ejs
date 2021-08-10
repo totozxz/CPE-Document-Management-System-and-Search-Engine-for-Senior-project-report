@@ -1,0 +1,57 @@
+<!--include Header-->
+<%-include('include/_header')%>
+<!--/include Header-->
+
+<!-- Body -->
+<main class="container" style="padding: 130px;">
+    <div class="container mt-5">
+        <div class="card card-6">
+            <div class="card-body">
+                    <div class="form-row">                        
+                        <div class="fs-4"> Filter</div>
+                            <ul class="list-inline m-0" id="filter">
+                                
+                                
+                                
+                            </ul>
+                        </div>
+                    </div>
+            </div>            
+        </div>
+</div>
+<div class="container mt-5">
+    <div class="card card-6">
+        <div class="card-body">
+            <div class="position-relative">
+                <div class="position-absolute top-0 end-0">
+                    <a href="/create" class='btn btn-success pull-right' role="button">
+                    Create
+                    </a>
+                </div>
+            </div>
+                <div class="table-responsive">
+                    <table class="table m-0">
+                        <thead>
+                            <tr>
+                                <th scope="col">Number</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Year</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                            <%-include('include/_Management')%>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+<script src="js/Manage.js"></script>
+</body>
+<!--/ Body -->
+
+<!--include Footer-->
+<%-include('include/_footer')%>
+<!--/include Footer-->

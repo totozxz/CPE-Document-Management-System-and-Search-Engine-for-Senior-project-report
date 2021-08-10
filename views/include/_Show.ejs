@@ -1,0 +1,10 @@
+<% for(var i = 0;i < docs.length;i++) { %>
+    <% if(docs[i] != null){ %>
+        <li class="table-row" >
+            <div class = "col col-1"><a href="/doc_description?id=<%= docs[i]._id %>">TITLE : <%= docs[i].project_title %></a>
+            <br>Year : <%= docs[i].Year %>   
+            <br>Tags : <%= docs[i].Tags %>
+            </div>
+        </li>
+    <% } %>
+<% } %>

@@ -1,0 +1,21 @@
+
+
+<% for(var i = 0;i < docs.length;i++) { %>
+    <% if(docs[i] != null){ %>
+        <tbody>
+            <tr>
+                <td scope="row"><%= docs[i].project_no %></td>
+                <td><%= docs[i].project_title %></td>
+                <td><%= docs[i].Year %></td>
+                                        
+                <td>
+                    <a href="/update_document?id=<%= docs[i]._id %>" role="button" class="btn btn-success btn-sm rounded-0" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
+                </td>
+                <td>
+                    <a class="btn btn-danger btn-sm rounded-0 delete" role="button" data-toggle="tooltip" data-placement="top" title="Delete" data-id=<%= docs[i]._id%>><i class="fa fa-trash"></i></a>                    
+                </td>
+            </tr>
+        </tbody>
+    <% } %>
+<% } %>
+                        

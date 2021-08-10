@@ -1,0 +1,106 @@
+<form name="my-form" action="/api/create" method="POST" id="Add_Doc" onsubmit="Set_Tags()" enctype="multipart/form-data">
+    <div class="page-wrapper bg-dark p-t-100 p-b-50">
+        <div class="wrapper wrapper--w900">
+            <div class="card card-6">
+                <div class="card-heading">
+                    <h2 class="title">Create a new project Document</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        <div class="form-row">
+                            <div class="name">Project Title</div>
+                            <div class="value">
+                                <input class="input--style-6" type="text" name="title" required aria-required="true">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                        <div class="name">Project number</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-6" name="group_number" placeholder="" required aria-required="true">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name ">Year</div>
+                            <div class="value">
+                                <select class="form-control" id="ddlYears" name="year" ></select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Advisor Name</div>
+                            <div class="value">
+                                <input class="input--style-6" type="text" name="advisor" required aria-required="true">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">CO-Advisor Name</div>
+                            <div class="value">
+                                <input class="input--style-6" type="text" name="co_advisor">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Member Name</div>
+                            
+                            <input type="hidden" value="1" id="total_member">
+                            
+                            <input type="hidden" value="0" id="check_2">
+                            <input type="hidden" value="0" id="check_3">
+                            <div class="value" id="member_fields">
+                                <ul class="list-inline m-0">
+                                    <li class="list-inline-item">
+                                        <input class="input--style-6" type="text" id="member_1" name="member" size="40" required aria-required="true">
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <button type="button" class="btn btn--radius-2 btn-outline-primary" onclick="addmember()">+</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="value">
+                                
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Tags</div>
+                            <input type="hidden" value="1" id="total_tag">
+                            <input type="hidden" id="All_tags" name="All_tags">
+                            <div class="value" id="tag_fields">
+                                
+                                <input class="input--style-6" type="text" id="Tag" placeholder="Type your hashtag & click enter." autocomplete="off">
+                                <div class="tag-container">
+                                
+                                </div>   
+                            </div>
+                            
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Upload Report</div>
+                            <div class="value">
+                                <div class="input-group js-input-file">
+                                    <input class="input-file" type="file" name="file1" id="file" accept="application/pdf">
+                                    <label class="label--file" for="file">Choose file</label>
+                                    <span class="input-file__info">No file chosen</span>
+                                </div>
+                                <div class="label--desc">Upload your Project Report.</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Upload Poster</div>
+                            <div class="value">
+                                <div class="input-group js-input-file">
+                                    <input class="input-file" type="file" name="file2" id="file2" accept="image/PNG, image/jpeg">
+                                    <label class="label--file" for="file2">Choose file</label>
+                                    <span class="input-file__info">No file chosen</span>
+                                </div>
+                                <div class="label--desc">Upload your Project Poster.</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <button class="btn2 btn--radius-2 btn--blue-2" type="submit">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

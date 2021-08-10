@@ -1,0 +1,150 @@
+<!--include Header -->
+
+<%-include('include/_header')%>
+
+<!--/include Header  -->
+<!-- Body -->
+<!--
+<div class="container-body">
+    <ul class="responsive-table">      
+        <li class="table-row" >
+        TITLE : <%= docs.project_title %>
+        <br>Project NO : <%= docs.project_no %>
+        <br>Tags : <%= docs.Tags %>
+        <br>Author : Warit Apichonkit
+        <br>Advisor : <%= docs.Advisor %>
+        <br>Co Advisor : <%= docs.Co_Advisor %>
+        <br>Year : <%= docs.Year %>
+        </li>
+    </ul>
+</div>-->
+<main class="container" style="padding: 130px;">
+<!-- Open Content -->
+<section class="bg-light">
+    <div class="container pb-5">
+        <div class="row">
+            <div class="col-lg-5 mt-5">
+                <div class="card mb-3" id="Poster_field">
+                    
+                    
+                </div>
+            </div>
+            
+            <!-- col end -->
+            <div class="col-lg-7 mt-5">
+                <div class="card ">
+                    <div class="card-body">
+                        <h1 class="h2"><%= docs.project_title %></h1>
+                        <p class="h3 py-2">Project NO : <%= docs.project_no %></p>
+                
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <h6>Tags:</h6>
+                            </li>
+                            <li class="list-inline-item">
+                                <p class="text-muted"><strong><%= docs.Tags %> </strong></p>
+                            </li>
+                        </ul>   
+                        <h6>Author:</h6>
+                        <% for (var i = 0;i < docs.Member.length;i++) { %> 
+                            <p><%= docs.Member[i] %></p>
+                        <% } %>
+                        
+                        <h6>Advisor:</h6>
+                        <p><%= docs.Advisor %></p>
+                        <% if (docs.Co_Advisor != null) { %> 
+                            <h6>Co Advisor:</h6> <%= docs.Co_Advisor %>
+                        <% } %>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <h6>Year :</h6>
+                            </li>
+                            <li class="list-inline-item">
+                                <p class="text-muted"><strong><%= docs.Year %></strong></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Close Content -->       
+
+<!-- Start Article -->
+<section class="py-5">
+    <div class="container">
+        <div class="row text-left p-2 pb-3">
+            <h4>Project File</h4>
+        </div>
+        
+        <div class="p-2 pb-3" >
+            <div class="product-wap card rounded-0" >
+                <div class="card-body">
+                    <a href="#" class="h3 text-decoration-none">Report File</a>
+                </div>
+                <div class="card-body" id="Report_field">
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div >
+
+    </div>
+</section>
+</main>
+<!-- End Article -->
+
+<!--/ Body -->
+<script>
+    $(document).ready(function(){
+    $.ajax({
+        type: "GET",
+        url: "../api/poster/?year=<%= docs.Year %>&number=<%= docs.project_no %>",
+        dataType: 'json',
+        success: function(data) {
+            var poster = data.PosterFile;
+            var new_poster = document.createElement('div');
+            new_poster.innerHTML = '<a href="/File/<%= docs.Year %>/<%= docs.project_no %>/'+poster+'" ><img class="card-img img-fluid" src="/File/<%= docs.Year %>/<%= docs.project_no %>/'+poster+'" alt="Project Poster" ></a>'
+            document.getElementById("Poster_field").append(new_poster);
+            
+        }
+    });
+
+    $.ajax({
+        type: "GET",
+        url: "../api/report/?year=<%= docs.Year %>&number=<%= docs.project_no %>",
+        dataType: 'json',
+        success: function(data) {
+            var report = data.ReportFile;
+            var new_report = document.createElement('div');
+            var filename = report.split("/");
+            new_report.innerHTML =  '<a class="text-decoration-none " href="/File/<%= docs.Year %>/<%= docs.project_no %>/'+report+'" target="_blank" >'  +filename[1]+'</a>'
+                                    
+            document.getElementById("Report_field").append(new_report);
+            
+        }
+    });
+  });
+</script>
+
+<!--include Footer-->
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container bg-grey">
+        <a class=" text-orange align-self-center" href="https://www.cpe.kmutt.ac.th/th/contact">
+            Contact us
+        </a>
+        <p class = "w3-right">
+        <i class="fab fa-facebook "></i> 
+        <a href="https://www.facebook.com/cpe.kmutt"> CPE @ KMUTT</a>
+        <!--
+        <i class="fas fa-phone-alt"></i> (+66) 0 2470 9388
+        </p> 
+        
+        <a class=" text-orange align-self-center" href="https://www.facebook.com/cpe.kmutt"> Facebook</a>
+        -->
+</footer>
+<!--/include Footer-->
+   
